@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de clientes</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    
+    <!-- Encabezado con el logo -->
+    <header class="hero is-white is-bold is-small">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+               
+                <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa" class="logo-image" style="filter: brightness(85%);">
+            </div>
+        </div>
+    </header>
+
+    <!-- Título de la página -->
+    <section class="section">
+        <div class="container">
+            <h1 class="title is-1 has-text-centered">Lista de Clientes</h1>
+        </div>
+    </section>
+
+    <div class="table-container">
+        {% if clientes %}
+            <table class="table is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Número de cliente</th>
+                        <th>Email</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cliente in clientes %}
+                    <tr>
+                        <td>{{ cliente.nombre }}</td>
+                        <td>{{ cliente.numero_cliente }}</td>
+                        <td>{{ cliente.email }}</td>
+                        <td>{{ cliente.direccion }}</td>
+                        <td>{{ cliente.telefono }}</td>
+                        <td>
+                            <a href="{% url 'editar_cliente' cliente.pk %}" class="button is-primary"><i class="fas fa-pencil-alt"></i> Editar</a>
+                            <a href="{% url 'borrar_cliente' cliente.pk %}" class="button is-danger"><i class="fas fa-trash"></i> Borrar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No hay clientes cargados.</p>
+        {% endif %}
+    </div>
+
+    <a href="{% url 'cliente_create' %}" class="button is-warning"><i class="fas fa-plus"></i> Añadir cliente</a>
+    <a href="{% url 'menu' %}" class="button is-primary">
+        <i class="fas fa-arrow-left"></i> Volver al Menú Principal
+    </a>
+    <!-- Enlace al archivo Bulma JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/js/bulma.min.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subir Orden de Compra</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <header class="header center">
+        <div class="logo-container">
+            <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa">
+        </div>
+    </header>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container">
+            <h1 class="title is-1 has-text-centered">Subir Orden de Compra</h1>
+            <div class="field">
+                <label class="label">Cliente:</label>
+                <div class="control">
+                    <input class="input" type="text" name="cliente" required>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Número de Orden:</label>
+                <div class="control">
+                    <input class="input" type="text" name="numero_orden" required>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Archivo:</label>
+                <div class="control">
+                    <input class="input" type="file" name="archivo" accept=".pdf, .doc, .docx" required>
+                </div>
+            </div>
+            <div class="control">
+                <button class="button is-warning" type="submit">Subir Orden</button>
+            </div>
+        </div>
+    </form>
+
+    <a href="{% url 'ordenes_compra_list' %}" class="button is-primary">
+        <i class="fas fa-list"></i> Buscar Órdenes de Compra
+    </a>
+
+    <a href="{% url 'menu' %}" class="button is-primary">
+        <i class="fas fa-arrow-left"></i> Volver al Menú Principal
+    </a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/js/bulma.min.js"></script>
+</body>
+</html>

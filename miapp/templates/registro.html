@@ -1,0 +1,117 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de Usuario</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.css' %}">
+    <!-- Estilos personalizados para centrar y estilizar los botones -->
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-container {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .register-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .auth-link.btn {
+            margin: 5px;
+            background-color: #FFA500;
+            color: white;
+        }
+
+        /* Ajustar tamaño de los campos de llenado de datos y centrarlos */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .input {
+            max-width: 300px;
+        }
+
+        /* Ajustar separación vertical entre los campos del formulario */
+        .field {
+            margin-bottom: 10px;
+        }
+
+        /* Agregar margen inferior al formulario */
+        .form-container {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header center">
+            <div class="logo-container">
+                <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa">
+            </div>
+            <h1 class="title">Registro de Usuario</h1>
+        </header>
+        <div class="content">
+            <!-- Estilos para los enlaces -->
+            <div class="register-container">
+                <div class="form-container">
+                    <form method="post">
+                        {% csrf_token %}
+                        <!-- Uso de los campos del formulario RegistroForm -->
+                        {% for field in form %}
+                            <div class="field">
+                                {{ field.label_tag }}
+                                <div class="control">
+                                    {{ field }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <button type="submit" class="auth-link btn is-success"><i class="fas fa-user-plus"></i> Registrarse</button>
+                    </form>
+
+                    <!-- Mostrar mensajes de error -->
+                    {% if form.errors %}
+                        <div class="notification is-danger">
+                            <ul>
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                        <li>{{ field.label }}: {{ error }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts de Materialize CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Artes Graficas Melfa</title>
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <!-- Encabezado con el logo -->
+    <header>
+        <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa">
+    </header>
+
+    <!-- Menú horizontal -->
+    <nav>
+        <ul>
+            <li><a href="{% url 'acciones_venta' %}">Acciones de Venta</a></li>
+            <li><a href="{% url 'cliente_list' %}">Clientes</a></li>
+            <li><a href="{% url 'proveedor_list' %}">Proveedores</a></li>
+            <li><a href="{% url 'presupuestos' %}">Presupuestos</a></li>
+            <li><a href="{% url 'subir_orden_compra' %}">Órdenes de Compra</a></li>
+            <!-- Agregar enlace al panel de administración -->
+            <li><a href="{% url 'admin:index' %}">Admin</a></li>
+        </ul>
+    </nav>
+
+    <!-- Sección de fotos y reseña de la empresa -->
+    <section class="reseña">
+        <!-- fotos e información de la empresa -->
+        <div class="foto-texto-container">
+            <div class="foto-column">
+                <div class="foto-container">
+                    <img src="{% static 'images/frente.png' %}" alt="frente de la empresa y equipo de trabajo">
+                </div>
+            </div>
+            <div class="texto-column">
+                <div class="texto-container">
+                    <p>
+                        Su etiqueta es nuestro desafío. Artes Gráficas Melfa S.A. es una empresa dedicada a lograr la excelencia en la producción de etiquetas autoadhesivas. Nuestro objetivo es brindarle la mejor y más ágil atención y un producto de gran calidad. Para ello, incorporamos nueva tecnología de forma constante, para estar al día con los últimos procesos que permiten una variedad de posibilidades.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Información de contacto y redes sociales -->
+    <footer>
+        <!-- Sección de redes sociales -->
+        <div class="redes-sociales">
+            <a href="https://www.facebook.com/artesgraficasmelfa" target="_blank">
+                <img src="{% static 'images/facebook-icon.png' %}" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/artesgraficasmelfa" target="_blank">
+                <img src="{% static 'images/instagram-icon.png' %}" alt="Instagram">
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Órdenes de Compra</title>
+    <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+</head>
+<header class="header center">
+    <div class="logo-container">
+        <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa">
+    </div>
+</header>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Lista de Órdenes de Compra</h1>
+            <ul>
+                {% for orden in ordenes %}
+                    <li>
+                        Cliente: {{ orden.cliente.nombre }}
+                        Número de Orden: {{ orden.numero_orden }}
+                        <a href="{{ orden.archivo.url }}" download>Descargar</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            <a href="{% url 'subir_orden_compra' %}" class="button is-warning">
+                <i class="fas fa-upload"></i> Subir Nueva Orden de Compra
+            </a>
+            <a href="{% url 'menu' %}" class="button is-primary">
+                <i class="fas fa-arrow-left"></i> Volver al Menú Principal
+            </a>
+        </div>
+    </section>
+</body>
+</html>

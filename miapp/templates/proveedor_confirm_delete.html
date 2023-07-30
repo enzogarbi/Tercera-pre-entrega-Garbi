@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmar Borrado</title>
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="main-container">
+        <header class="header">
+            <div class="logo-container has-text-centered"> <!-- Añadimos la clase has-text-centered -->
+                <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa">
+            </div>
+        </header>
+        <div class="container">
+            <div class="columns">
+                <div class="column is-12">
+                    <h1 class="title has-text-centered">¿Estás seguro de que deseas borrar este proveedor?</h1>
+                    <!-- Aumentamos el tamaño del nombre usando la clase is-size-large -->
+                    <p class="has-text-centered is-size-large">Nombre: {{ proveedor.nombre }}</p>
+                    <form method="post" class="has-text-centered">
+                        {% csrf_token %}
+                        <button type="submit" class="button is-warning"><i class="fas fa-trash"></i> Confirmar</button>
+                    </form>
+                    <a href="{% url 'proveedor_list' %}" class="button is-link is-centered"><i class="fas fa-arrow-left"></i> Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

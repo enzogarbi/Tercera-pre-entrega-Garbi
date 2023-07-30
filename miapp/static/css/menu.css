@@ -1,0 +1,80 @@
+/* Estilo para el texto */
+.foto-texto-container p {
+    font-family: 'Comic Sans MS', cursive; /* Utiliza la fuente Comic Sans para el texto */
+    font-size: 20px;
+    line-height: 2;
+    max-width: 500px;
+}
+
+/* Estilos para el encabezado con el logo */
+header {
+    background-color: #ffffff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Estilos para el menú horizontal */
+nav {
+    background-color: #ff9906;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 20px;
+}
+
+nav ul li a {
+    color: #f9f6f6;
+    text-decoration: none;
+    font-size: 20px; /* Ajusta el tamaño del texto según tus preferencias */
+}
+
+nav ul li a:hover {
+    color: #6b0202; /* Cambia el color a un tono diferente cuando el usuario haga hover */
+}
+
+/* Estilos para la sección de fotos y reseña */
+.reseña {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f7f2f2; 
+}
+
+/* Estilos para el contenedor que engloba la foto y el texto */
+.foto-texto-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilos para la imagen */
+.foto-texto-container img {
+    width: 600px; /* Ajusta el ancho de la imagen según tus necesidades */
+    height: auto; /* Para mantener la proporción de la imagen */
+    margin-right: 20px; /* Espacio entre la imagen y el texto */
+}
+
+/* Estilos para el footer con las redes sociales */
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 5px;
+}
+
+.redes-sociales a {
+    margin: 5px;
+}
+
+/* Ajustar el tamaño de los íconos de las redes sociales */
+.redes-sociales img {
+    width: 50px; 
+    height: auto;
+}

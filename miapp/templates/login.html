@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Artes Graficas Melfa S.A</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.css' %}">
+    <!-- Estilos personalizados para centrar y estilizar los botones -->
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .login-container {
+            display: flex;
+            flex-wrap: wrap; /* Permite que los botones se envuelvan cuando el ancho es estrecho */
+            justify-content: center; /* Centra los botones horizontalmente */
+        }
+
+        .auth-link.btn {
+            margin: 10px;
+            background-color: #FFA500;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header center">
+            <div class="logo-container">
+                <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa">
+            </div>
+        </header>
+        <div class="content">
+            <!-- Estilos para los enlaces -->
+            <div class="login-container">
+                <div class="form-container">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="field">
+                            <label class="label">Nombre de usuario:</label>
+                            <div class="control">
+                                {{ form.username }}
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label">Contraseña:</label>
+                            <div class="control">
+                                {{ form.password }}
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <button type="submit" class="auth-link btn is-success"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts de Materialize CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

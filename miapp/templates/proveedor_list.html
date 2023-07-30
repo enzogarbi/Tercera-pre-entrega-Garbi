@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Proveedores</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Encabezado con el logo -->
+    <header class="hero is-white is-bold is-small">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <!-- Aplicamos el filtro de brillo en línea -->
+                <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa" class="logo-image" style="filter: brightness(85%);">
+            </div>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container has-text-centered">
+            <h1 class="title is-1">Lista de Proveedores</h1>
+        </div>
+    </section>
+
+    <div class="table-container">
+        {% if proveedor %}
+            <table class="table is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Insumo</th>
+                        <th>Email</th>
+                        <th>Dirección</th>
+                        <th>Teléfono</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for proveedor in proveedor %}
+                    <tr>
+                        <td>{{ proveedor.nombre }}</td>
+                        <td>{{ proveedor.insumo }}</td>
+                        <td>{{ proveedor.email }}</td>
+                        <td>{{ proveedor.direccion }}</td>
+                        <td>{{ proveedor.telefono }}</td>
+                        <td>
+                            <a href="{% url 'proveedor_edit' proveedor.pk %}" class="button is-primary"><i class="fas fa-pencil-alt"></i> Editar</a>
+                            <a href="{% url 'borrar_proveedor' proveedor.pk %}" class="button is-danger"><i class="fas fa-trash"></i> Borrar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No hay proveedores cargados.</p>
+        {% endif %}
+    </div>
+
+    <a href="{% url 'proveedor_create' %}" class="button is-warning"><i class="fas fa-plus"></i> Añadir Proveedor</a>
+    <a href="{% url 'menu' %}" class="button is-primary">
+        <i class="fas fa-arrow-left"></i> Volver al Menú Principal
+    </a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/js/bulma.min.js"></script>
+</body>
+</html>

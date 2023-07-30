@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <header class="header center">
+        <div class="logo-container">
+            <img src="{% static 'images/logo.png' %}" alt="Logo de Mi Empresa">
+        </div>
+    </header>
+    <title>Orden de Compra Subida Exitosamente</title>
+</head>
+<body>
+    <h1>Orden de Compra Subida Exitosamente</h1>
+    <p>La orden de compra ha sido subida exitosamente.</p>
+    <a href="{% url 'ordenes_compra_list' %}">Ver Lista de Órdenes de Compra</a>
+    <a href="{% url 'menu' %}">Volver al Menú Principal</a>
+</body>
+</html>
