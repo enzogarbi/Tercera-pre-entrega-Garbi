@@ -16,15 +16,24 @@
     <section class="section">
         <div class="container">
             <h1 class="title">Lista de Órdenes de Compra</h1>
+
+            <!-- Agrega el formulario de búsqueda -->
+            <form id="search-form">
+                <label for="search-input">Buscar orden de compra:</label>
+                <input type="text" id="search-input" name="search" placeholder="Número de Orden">
+                <button type="submit">Buscar</button>
+            </form>
+
             <ul>
                 {% for orden in ordenes %}
-                    <li>
+                    <li class="order-item">
                         Cliente: {{ orden.cliente.nombre }}
                         Número de Orden: {{ orden.numero_orden }}
                         <a href="{{ orden.archivo.url }}" download>Descargar</a>
                     </li>
                 {% endfor %}
             </ul>
+            
             <a href="{% url 'subir_orden_compra' %}" class="button is-warning">
                 <i class="fas fa-upload"></i> Subir Nueva Orden de Compra
             </a>
@@ -33,5 +42,19 @@
             </a>
         </div>
     </section>
+
+    <!-- Agrega tu script JavaScript -->
+    <script>
+        document.getElementById("search-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const searchText = document.getElementById("search-input").value.toLowerCase();
+            const orderItems = document.getElementsByClassName("order-item");
+
+            for (const item of orderItems) {
+                const orderNumber = item.textContent.toLowerCase().indexOf(searchText);
+                item.style.display = orderNumber !== -1 ? "block" : "none";
+            }
+        });
+    </script>
 </body>
 </html>
